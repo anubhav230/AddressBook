@@ -65,6 +65,7 @@ public class Main {
 				String searchWord;
 				Scanner sc= new Scanner(System.in);
 				AddressBook ab = new AddressBook();
+				System.out.println("Please enter mobile number for searching person details");
 				searchWord=sc.next();
 				ab.searchPerson(searchWord);
 				break;

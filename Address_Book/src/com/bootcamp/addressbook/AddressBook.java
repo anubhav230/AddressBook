@@ -141,7 +141,7 @@ public class AddressBook extends Person implements AddressBookInterface {
 				 while(y.hasNext() && found==false)
 				 {
 					firstName=y.next();
-					System.out.println(firstName);
+					//System.out.println(firstName);
 					lastName=y.next();
 					mobNo=y.next();
 					city=y.next(); 
@@ -154,7 +154,7 @@ public class AddressBook extends Person implements AddressBookInterface {
 						}
 					else
 						{
-							System.out.println("error");
+							System.out.println(" ");
 						}
 				 }
 			 }
