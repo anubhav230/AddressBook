@@ -5,7 +5,7 @@ package com.bootcamp.addressbook;
 public class Person extends Address {
 	private String firstName;
 	private String lastName;
-	private int mobileNumber;
+	private long mobileNumber;
 	Address address=new Address();
 
 	
@@ -29,12 +29,12 @@ public class Person extends Address {
 		return lastName;
 	}//getLastName()
 	
-	public void setMobileNumber(int mobileNumber) {
+	public void setMobileNumber(long mobileNumber) {
 		this.mobileNumber = mobileNumber;
 		
 	}//setMobileNumber()
 	
-	public int getMobileNumber() {
+	public long getMobileNumber() {
 		return mobileNumber;
 	}//getMobileNumber()
 	

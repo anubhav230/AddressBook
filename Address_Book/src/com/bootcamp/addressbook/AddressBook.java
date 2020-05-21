@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Formatter;
 import java.util.List;
 import java.util.Scanner;
 
@@ -15,6 +16,9 @@ public class AddressBook extends Person implements AddressBookInterface {
 	Person pr = new Person();
 	private static String filePath = "abc.csv";
 	FileWriter fileWriter = null;
+	private static Formatter x;
+	private static Scanner y;
+	private static String choice, name;
 	
 	
 	public void addPerson() {
@@ -32,7 +36,7 @@ public class AddressBook extends Person implements AddressBookInterface {
 		String lastName=scanner.next();
 		pr.setLastName(lastName);
 		System.out.println("mobile number");
-		int mobileNumber=scanner.nextInt();
+		long mobileNumber=scanner.nextLong();
 		pr.setMobileNumber(mobileNumber);
 		System.out.println("Enter state");
 		String state=scanner.next();
@@ -48,18 +52,35 @@ public class AddressBook extends Person implements AddressBookInterface {
 		//System.out.println(pr.getFristName());
 		
 		//System.out.println(address.getCity()+" "+address.getZip());
-		 
+		System.out.println("1: for save data in file ");
+		System.out.println("2: for skip data in file ");
+		
+		int i=scanner.nextInt();
+		if (i==1) { 
+			
+		
 		try {
 			fileWriter = new FileWriter(filePath,true);
 			
-			//fileWriter.append(CSV_HEADER);
+//			fileWriter.append(CSV_HEADER);
+//			fileWriter.append('\n');
 			BufferedWriter bw = new BufferedWriter(fileWriter);
 			PrintWriter pw= new PrintWriter(bw);
 			//StringBuilder sv= new StringBuilder();
 			fileWriter.append("");
-			
+			//for (Person pr : user) {
 				pw.println(pr.getFristName()+","+pr.getLastName()+","+pr.getMobileNumber()+","+address.getState()+","+address.getCity()+","+address.getZip());
-
+//				pw.println(',');
+//				pw.println(pr.getLastName());
+//				pw.println(',');
+//				pw.println(String.valueOf(pr.getMobileNumber()));
+//				pw.println(',');
+//				pw.println(pr.getState());
+//				pw.println(',');
+//				pw.println(pr.getCity());
+//				pw.println(',');
+//				pw.println(String.valueOf(pr.getZip()));
+//				//pw.println('\n');
 				pw.flush();
 				pw.close();
 
@@ -79,8 +100,14 @@ public class AddressBook extends Person implements AddressBookInterface {
 		
 		//}
 		
-	
+		System.out.println("data has been saved");
+		}
 		
+		
+		else {
+			System.out.println("data not saved");
+		}
+			
 	}//addPerson()
 	
 	public void display() {
@@ -100,7 +127,42 @@ public class AddressBook extends Person implements AddressBookInterface {
 		}
 				
 	}//display()
+	public void searchPerson(String searchWord) {
 	
+		
+			 boolean found =false;
+			 
+			 String firstName=""; String lastName=""; String mobNo=""; String city=""; String state=""; String zip="";
+			
+			 try 
+			 {
+				 y=new Scanner(new File("abc.csv"));
+				 y.useDelimiter("[,\n]");
+				 while(y.hasNext() && found==false)
+				 {
+					firstName=y.next();
+					System.out.println(firstName);
+					lastName=y.next();
+					mobNo=y.next();
+					city=y.next(); 
+					state=y.next();
+					zip=y.next();
+					if(mobNo.equals(searchWord))
+						{
+							found=true;
+							System.out.println(firstName+","+lastName+","+mobNo+","+city+","+state+","+zip);
+						}
+					else
+						{
+							System.out.println("error");
+						}
+				 }
+			 }
+			 catch(Exception E)
+			 {
+				 System.out.println("Error");
+			 }
+	}
 	public void editPerson() {
 			
 	}//editPerson()

@@ -31,6 +31,7 @@ public class AddressBookManager implements AddressBookManagerInterface {
 	}//openAddressBook()
 	
 	public void saveAddressBook() {
+		AddressBook ab=new AddressBook(); 
 		
 		
 	}//saveAddressBook()
