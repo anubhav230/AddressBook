@@ -62,8 +62,8 @@ public class AddressBook extends Person implements AddressBookInterface {
 		try {
 			fileWriter = new FileWriter(filePath,true);
 			
-//			fileWriter.append(CSV_HEADER);
-//			fileWriter.append('\n');
+			//fileWriter.append(CSV_HEADER);
+			//fileWriter.append('\n');
 			BufferedWriter bw = new BufferedWriter(fileWriter);
 			PrintWriter pw= new PrintWriter(bw);
 			//StringBuilder sv= new StringBuilder();
@@ -144,7 +144,7 @@ public class AddressBook extends Person implements AddressBookInterface {
 					//System.out.println(firstName);
 					lastName=y.next();
 					mobNo=y.next();
-					city=y.next(); 
+					city=y.next();
 					state=y.next();
 					zip=y.next();
 					if(mobNo.equals(searchWord))
@@ -167,7 +167,50 @@ public class AddressBook extends Person implements AddressBookInterface {
 			
 	}//editPerson()
 	
-	public void deletePerson() {
+	public void deletePerson(String searchWord) {
+		String tempFile="tempFile.csv";
+		File oldFile=new File(filePath);
+		File newFile=new File(tempFile);
+		String firstName=""; String lastName=""; String mobNo=""; String city=""; String state=""; String zip="";
+		try {
+			FileWriter fw=new FileWriter(tempFile,true);
+			BufferedWriter bw =new BufferedWriter(fw);
+			PrintWriter pw=new PrintWriter(bw);
+			y=new Scanner(new File(filePath));
+			y.useDelimiter("[,\n]");
+			
+			while (y.hasNext()) {
+				firstName=y.next();
+				//System.out.println(firstName);
+				lastName=y.next();
+				mobNo=y.next();
+				city=y.next(); 
+				state=y.next();
+				zip=y.next();
+				
+				if(!mobNo.equals(searchWord)) {
+					pw.println(firstName+","+lastName+","+mobNo+","+city+","+state+","+zip);
+				}
+				
+				
+			}
+			y.close();
+			pw.flush();
+			pw.close();
+			
+			oldFile.delete();
+			File dump=new File(filePath);
+			newFile.renameTo(dump);
+			
+			
+			
+			System.out.println("done");
+			} catch (Exception e) {
+			System.out.println("error");
+		}
+		
+		
+		
 		
 	}//deletePerson()
 	

@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 
 public class Main {
+	
 
 	public void options() {
 		System.out.println("1 : Create new address book");
@@ -16,7 +17,7 @@ public class Main {
 		System.out.println("5 : exit");
 		
 	}
-	public static List<Person> list = new ArrayList<Person>();
+	//public static List<Person> list = new ArrayList<Person>();
 	
 	public static void write(String filePath) {
 		
@@ -27,6 +28,8 @@ public class Main {
 		Scanner scanner=new Scanner(System.in);
 		Main mn=new Main();
 		AddressBookManager addBookManager=new AddressBookManager();
+		//Scanner sc= new Scanner(System.in);
+		AddressBook ab = new AddressBook();
 		
 		
 		for(int i=1;i>0;i++) {
@@ -61,12 +64,21 @@ public class Main {
 			case 1:
 				addBookManager.openAddressBook();
 				break;
+				
+				
+			case 4:
+				String searchWord2;
+				
+				System.out.println("Please enter mobile number for delete person details");
+				searchWord2=scanner.next();
+				ab.deletePerson(searchWord2);
+				break;	
 			case 7:
 				String searchWord;
-				Scanner sc= new Scanner(System.in);
-				AddressBook ab = new AddressBook();
+				//Scanner sc= new Scanner(System.in);
+				//AddressBook ab = new AddressBook();
 				System.out.println("Please enter mobile number for searching person details");
-				searchWord=sc.next();
+				searchWord=scanner.next();
 				ab.searchPerson(searchWord);
 				break;
 			}
@@ -82,7 +94,7 @@ public class Main {
 			addBookManager.saveAsAddressBook();
 			break;
 		case 5:
-			addBookManager.quit();
+			
 			break;
 			
 			

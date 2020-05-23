@@ -9,6 +9,8 @@ public class AddressBookManager implements AddressBookManagerInterface {
 		Scanner sc=new Scanner(System.in);
 		System.out.println("enter book name");
 		String name =sc.next();
+		
+		
 		System.out.println("-----------------------");
 		System.out.println("1 : for addPerson");
 		System.out.println("-----------------------");

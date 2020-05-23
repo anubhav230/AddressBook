@@ -5,7 +5,7 @@ public interface AddressBookInterface {
 	public void searchPerson(String searchWord);
 	public void editPerson();
 	
-	public void deletePerson();
+	public void deletePerson(String searchWord);
 	
 	public void sortByName();
 	
